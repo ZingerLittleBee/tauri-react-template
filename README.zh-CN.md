@@ -110,6 +110,11 @@ Zustand 配置包含：
 - **Tauri Store 持久化** 用于应用重启后保存的数据
 - **TypeScript 支持** 用于类型安全的状态管理
 
+immer 示例：
+```bash
+src/store/immer/immer-store.ts
+```
+
 带持久化的示例状态管理：
 ```typescript
 import { create } from 'zustand'

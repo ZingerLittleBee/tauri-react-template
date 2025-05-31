@@ -110,6 +110,11 @@ Zustand is configured with:
 - **Tauri Store persistence** for data that survives app restarts
 - **TypeScript support** for type-safe stores
 
+Example store with Immer:
+```bash
+src/store/immer/immer-store.ts
+```
+
 Example store with persistence:
 ```typescript
 import { create } from 'zustand'
