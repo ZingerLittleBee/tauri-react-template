@@ -34,7 +34,12 @@ function App() {
             <img src="/react.svg" alt="React logo" />
           </a>
         </Button>
-        <Button asChild size="icon" className="p-2">
+        <Button asChild size="icon" variant="outline" className="p-2">
+          <a href="https://ui.shadcn.com" target="_blank">
+            <img src="/shadcn.svg" alt="Shadcn logo" />
+          </a>
+        </Button>
+        <Button asChild size="icon" variant="outline" className="p-2">
           <a href="https://zustand.dev/" target="_blank">
             <img src="/zustand.svg" alt="Zustand logo" />
           </a>
