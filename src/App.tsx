@@ -30,7 +30,9 @@ function App() {
     <main className="container flex h-screen flex-col items-center justify-center gap-8">
       <div className="text-center">
         <h1 className="text-2xl font-bold">Welcome to Tauri + Vite</h1>
-        <h2 className="text-lg font-medium">React + Shadcn + Zustand</h2>
+        <h2 className="text-lg font-medium">
+          React + Shadcn + Tailwind4 + Zustand
+        </h2>
       </div>
       <div className="flex gap-2">
         <Button asChild size="icon" className="p-2">
@@ -51,6 +53,11 @@ function App() {
         <Button asChild size="icon" variant="outline" className="p-2">
           <a href="https://ui.shadcn.com" target="_blank">
             <img src="/shadcn.svg" alt="Shadcn logo" />
+          </a>
+        </Button>
+        <Button asChild size="icon" variant="outline" className="p-2">
+          <a href="https://tailwindcss.com/" target="_blank">
+            <img src="/tailwind.svg" alt="Tailwind logo" />
           </a>
         </Button>
         <Button asChild size="icon" variant="outline" className="p-2">
