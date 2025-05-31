@@ -1,9 +1,7 @@
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { invoke } from '@tauri-apps/api/core'
 import { useState } from 'react'
-
-import { Button } from '@/components/ui/button'
-
-import reactLogo from './assets/react.svg'
 import { useBoundStore } from './store'
 
 function App() {
@@ -18,42 +16,49 @@ function App() {
   }
 
   return (
-    <main className="container">
+    <main className="container flex h-screen flex-col items-center justify-center gap-4">
       <h1>Welcome to Tauri + React</h1>
-      <div className="flex h-32 w-32 flex-col">
-        <Button asChild>
+      <div className="flex gap-2">
+        <Button asChild size="icon" className="p-2">
           <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" className="logo vite" alt="Vite logo" />
+            <img src="/vite.svg" alt="Vite logo" />
           </a>
         </Button>
-        <Button asChild>
+        <Button asChild size="icon" className="p-2">
           <a href="https://tauri.app" target="_blank">
-            <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
+            <img src="/tauri.svg" alt="Tauri logo" />
           </a>
         </Button>
-        <Button asChild>
+        <Button asChild size="icon" className="p-2">
           <a href="https://reactjs.org" target="_blank">
-            <img src={reactLogo} className="logo react" alt="React logo" />
+            <img src="/react.svg" alt="React logo" />
+          </a>
+        </Button>
+        <Button asChild size="icon" className="p-2">
+          <a href="https://zustand.dev/" target="_blank">
+            <img src="/zustand.svg" alt="Zustand logo" />
           </a>
         </Button>
       </div>
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
       <p>Bears: {bears}</p>
-      <Button onClick={addBear}>Add Bear</Button>
+      <Button onClick={addBear} variant="outline">
+        Add Bear
+      </Button>
 
       <form
-        className="row"
+        className="flex gap-2"
         onSubmit={(e) => {
           e.preventDefault()
           greet()
         }}
       >
-        <input
+        <Input
           id="greet-input"
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Enter a name..."
         />
-        <button type="submit">Greet</button>
+        <Button type="submit">Greet</Button>
       </form>
       <p>{greetMsg}</p>
     </main>
