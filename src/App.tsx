@@ -3,10 +3,13 @@ import { invoke } from '@tauri-apps/api/core'
 import { useState } from 'react'
 import './App.css'
 import reactLogo from './assets/react.svg'
+import { useBoundStore } from './store'
 
 function App() {
 	const [greetMsg, setGreetMsg] = useState('')
 	const [name, setName] = useState('')
+	const bears = useBoundStore.use.bears()
+	const addBear = useBoundStore.use.addBear()
 
 	async function greet() {
 		// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
@@ -47,6 +50,8 @@ function App() {
 				</Button>
 			</div>
 			<p>Click on the Tauri, Vite, and React logos to learn more.</p>
+			<p>Bears: {bears}</p>
+			<Button onClick={addBear}>Add Bear</Button>
 
 			<form
 				className='row'
