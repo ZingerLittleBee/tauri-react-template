@@ -1,16 +1,16 @@
 import { Creator } from '.'
 
 type State = {
-	bears: number
+  bears: number
 }
 
 type Actions = {
-	addBear: () => void
+  addBear: () => void
 }
 
 export type BearSlice = State & Actions
 
-export const createBearSlice: Creator<BearSlice> = set => ({
-	bears: 0,
-	addBear: () => set(state => ({ bears: state.bears + 1 }))
+export const createBearSlice: Creator<BearSlice> = (set) => ({
+  bears: 0,
+  addBear: () => set((state) => ({ bears: state.bears + 1 }))
 })
