@@ -1,5 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useBoundStore } from '@/store'
+import { useImmerStore } from '@/store/immer/immer-store'
+import usePersistStore from '@/store/persist/persist-store'
 import { invoke } from '@tauri-apps/api/core'
 import { useState } from 'react'
 import {
@@ -10,14 +13,14 @@ import {
   CardTitle
 } from './components/ui/card'
 import { Label } from './components/ui/label'
-import { useBoundStore } from './store'
-import usePersistStore from './store/persist/persist-store'
 
 function App() {
   const [greetMsg, setGreetMsg] = useState('')
   const [name, setName] = useState('')
   const bears = useBoundStore.use.bears()
   const addBear = useBoundStore.use.addBear()
+
+  const { position, setX, setY } = useImmerStore()
 
   const { fishes, addFish } = usePersistStore()
 
@@ -27,7 +30,7 @@ function App() {
   }
 
   return (
-    <main className="container flex h-screen flex-col items-center justify-center gap-8">
+    <main className="flex h-screen flex-col items-center justify-center gap-8">
       <div className="text-center">
         <h1 className="text-2xl font-bold">Welcome to Tauri + Vite</h1>
         <h2 className="text-lg font-medium">
@@ -67,11 +70,15 @@ function App() {
         </Button>
       </div>
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-      <div className="flex w-[400px] items-center justify-center gap-2">
-        <Card className="w-full">
+      <div className="grid grid-cols-3 gap-4">
+        <Card>
           <CardHeader>
             <CardTitle>Normal Store</CardTitle>
-            <CardDescription>This store is memory-only.</CardDescription>
+            <CardDescription>
+              This store is memory-only.
+              <br />
+              <br />
+            </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-2">
             <Label>Bears: {bears}</Label>
@@ -80,7 +87,7 @@ function App() {
             </Button>
           </CardContent>
         </Card>
-        <Card className="w-full">
+        <Card>
           <CardHeader>
             <CardTitle>Persist Store</CardTitle>
             <CardDescription>
@@ -92,6 +99,27 @@ function App() {
             <Button onClick={addFish} variant="outline">
               Add Fish
             </Button>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Immer Store</CardTitle>
+            <CardDescription>
+              This store is using Immer to manage state.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <Label>
+              Position: {position.x}, {position.y}
+            </Label>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => setX(position.x + 1)}>
+                Move X
+              </Button>
+              <Button variant="outline" onClick={() => setY(position.y + 1)}>
+                Move Y
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>

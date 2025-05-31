@@ -1,4 +1,5 @@
 import { create, StateCreator } from 'zustand'
+import { immer } from 'zustand/middleware/immer'
 import { createPositionSlice, PositionSlice } from './position'
 
 type ImmerStore = PositionSlice
@@ -10,6 +11,8 @@ export type ImmerCreator<T extends Partial<ImmerStore>> = StateCreator<
   T
 >
 
-export const useImmerStore = create<ImmerStore>()((...a) => ({
-  ...createPositionSlice(...a)
-}))
+export const useImmerStore = create<ImmerStore>()(
+  immer((...a) => ({
+    ...createPositionSlice(...a)
+  }))
+)
