@@ -1,4 +1,4 @@
-import { Creator } from '.'
+import { PersistCreator } from './persist-store'
 
 type State = {
   fishes: number
@@ -10,7 +10,7 @@ type Actions = {
 
 export type FishSlice = State & Actions
 
-export const createFishSlice: Creator<FishSlice> = (set) => ({
+export const createFishSlice: PersistCreator<FishSlice> = (set) => ({
   fishes: 0,
   addFish: () => set((state) => ({ fishes: state.fishes + 1 }))
 })
