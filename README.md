@@ -99,7 +99,7 @@ This template includes a pre-configured Shadcn/ui setup with:
 
 To add new components:
 ```bash
-npx shadcn@latest add button
+pnpm dlx shadcn@latest add button
 ```
 
 ## 🐻 State Management

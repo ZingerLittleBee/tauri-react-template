@@ -99,7 +99,7 @@ tauri-react-template/
 
 添加新组件：
 ```bash
-npx shadcn@latest add button
+pnpm dlx shadcn@latest add button
 ```
 
 ## 🐻 状态管理
