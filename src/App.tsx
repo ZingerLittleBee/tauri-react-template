@@ -63,40 +63,36 @@ function App() {
       </div>
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
       <div className="grid grid-cols-3 gap-4">
-        <Card>
+        <Card className="h-full">
           <CardHeader>
             <CardTitle>Normal Store</CardTitle>
-            <CardDescription>
-              This store is memory-only.
-              <br />
-              <br />
-            </CardDescription>
+            <CardDescription>This store is memory-only.</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-2">
+          <CardContent className="mt-auto flex flex-col gap-2">
             <Label>Bears: {bears}</Label>
             <Button onClick={addBear} variant="outline">
               Add Bear
             </Button>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="h-full">
           <CardHeader>
             <CardTitle>Persist Store</CardTitle>
             <CardDescription>This store is persisted to the filesystem.</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-2">
+          <CardContent className="mt-auto flex flex-col gap-2">
             <Label>Fishes: {fishes}</Label>
             <Button onClick={addFish} variant="outline">
               Add Fish
             </Button>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="h-full">
           <CardHeader>
             <CardTitle>Immer Store</CardTitle>
             <CardDescription>This store is using Immer to manage state.</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col gap-2">
+          <CardContent className="mt-auto flex flex-col gap-2">
             <Label>
               Position: {position.x}, {position.y}
             </Label>
