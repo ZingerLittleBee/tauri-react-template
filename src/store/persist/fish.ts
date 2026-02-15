@@ -1,10 +1,10 @@
 import type { PersistCreator } from './persist-store'
 
-type State = {
+interface State {
   fishes: number
 }
 
-type Actions = {
+interface Actions {
   addFish: () => void
 }
 

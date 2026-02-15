@@ -6,9 +6,10 @@ type WithSelectors<S> = S extends { getState: () => infer T }
 
 export const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(_store: S) => {
   const store = _store as WithSelectors<typeof _store>
-  store.use = {}
-  for (const k of Object.keys(store.getState())) {
-    ;(store.use as any)[k] = () => store((s) => s[k as keyof typeof s])
+  type State = ReturnType<typeof store.getState>
+  store.use = {} as { [K in keyof State]: () => State[K] }
+  for (const key of Object.keys(store.getState()) as Array<keyof State>) {
+    store.use[key] = () => store((state) => state[key])
   }
 
   return store

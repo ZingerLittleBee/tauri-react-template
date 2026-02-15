@@ -32,32 +32,32 @@ function App() {
       <div className="flex gap-2">
         <Button asChild className="p-2" size="icon">
           <a href="https://vitejs.dev" rel="noopener" target="_blank">
-            <img alt="Vite logo" src="/vite.svg" />
+            <img alt="Vite logo" height={24} src="/vite.svg" width={24} />
           </a>
         </Button>
         <Button asChild className="p-2" size="icon">
           <a href="https://tauri.app" rel="noopener" target="_blank">
-            <img alt="Tauri logo" src="/tauri.svg" />
+            <img alt="Tauri logo" height={24} src="/tauri.svg" width={24} />
           </a>
         </Button>
         <Button asChild className="p-2" size="icon">
           <a href="https://reactjs.org" rel="noopener" target="_blank">
-            <img alt="React logo" src="/react.svg" />
+            <img alt="React logo" height={24} src="/react.svg" width={24} />
           </a>
         </Button>
         <Button asChild className="p-2" size="icon" variant="outline">
           <a href="https://ui.shadcn.com" rel="noopener" target="_blank">
-            <img alt="Shadcn logo" src="/shadcn.svg" />
+            <img alt="Shadcn logo" height={24} src="/shadcn.svg" width={24} />
           </a>
         </Button>
         <Button asChild className="p-2" size="icon" variant="outline">
           <a href="https://tailwindcss.com/" rel="noopener" target="_blank">
-            <img alt="Tailwind logo" src="/tailwind.svg" />
+            <img alt="Tailwind logo" height={24} src="/tailwind.svg" width={24} />
           </a>
         </Button>
         <Button asChild className="p-2" size="icon" variant="outline">
           <a href="https://zustand.dev/" rel="noopener" target="_blank">
-            <img alt="Zustand logo" src="/zustand.svg" />
+            <img alt="Zustand logo" height={24} src="/zustand.svg" width={24} />
           </a>
         </Button>
       </div>

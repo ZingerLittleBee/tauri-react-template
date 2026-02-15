@@ -1,13 +1,13 @@
 import type { ImmerCreator } from './immer-store'
 
-type State = {
+interface State {
   position: {
     x: number
     y: number
   }
 }
 
-type Actions = {
+interface Actions {
   setX: (x: number) => void
   setY: (y: number) => void
 }

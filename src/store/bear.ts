@@ -1,10 +1,10 @@
 import type { Creator } from '.'
 
-type State = {
+interface State {
   bears: number
 }
 
-type Actions = {
+interface Actions {
   addBear: () => void
 }
 

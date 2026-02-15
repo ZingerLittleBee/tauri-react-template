@@ -5,8 +5,11 @@ import type { PersistStore } from './persist-store'
 
 export class TauriStorageAdapter implements PersistStorage<PersistStore> {
   private tauriStore: Store | null = null
+  private readonly storePath: string
 
-  constructor(private storePath = 'persist-store.json') {}
+  constructor(storePath = 'persist-store.json') {
+    this.storePath = storePath
+  }
 
   async init(): Promise<void> {
     this.tauriStore = await load(this.storePath)
@@ -15,13 +18,22 @@ export class TauriStorageAdapter implements PersistStorage<PersistStore> {
     }
   }
 
-  async getItem(name: string): Promise<StorageValue<PersistStore> | null> {
+  private async getStore(): Promise<Store> {
     if (!this.tauriStore) {
       await this.init()
     }
 
+    if (!this.tauriStore) {
+      throw new Error('Store is not initialized')
+    }
+
+    return this.tauriStore
+  }
+
+  async getItem(name: string): Promise<StorageValue<PersistStore> | null> {
     try {
-      const value = await this.tauriStore!.get<PersistStore>(name)
+      const store = await this.getStore()
+      const value = await store.get<PersistStore>(name)
       if (value) {
         return { state: value }
       }
@@ -32,24 +44,18 @@ export class TauriStorageAdapter implements PersistStorage<PersistStore> {
   }
 
   async setItem(name: string, value: StorageValue<PersistStore>): Promise<void> {
-    if (!this.tauriStore) {
-      await this.init()
-    }
-
     try {
-      await this.tauriStore!.set(name, value.state)
+      const store = await this.getStore()
+      await store.set(name, value.state)
     } catch (error) {
       console.error(`Error setting ${name} in store:`, error)
     }
   }
 
   async removeItem(name: string): Promise<void> {
-    if (!this.tauriStore) {
-      await this.init()
-    }
-
     try {
-      await this.tauriStore!.delete(name)
+      const store = await this.getStore()
+      await store.delete(name)
     } catch (error) {
       console.error(`Error removing ${name} from store:`, error)
     }
