@@ -1,4 +1,4 @@
-import { Creator } from '.'
+import type { Creator } from '.'
 
 type State = {
   bears: number

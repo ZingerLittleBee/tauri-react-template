@@ -1,4 +1,4 @@
-import { ImmerCreator } from './immer-store'
+import type { ImmerCreator } from './immer-store'
 
 type State = {
   position: {

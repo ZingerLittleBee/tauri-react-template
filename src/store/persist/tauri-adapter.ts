@@ -1,12 +1,12 @@
-import { load, Store } from '@tauri-apps/plugin-store'
-import { PersistStorage, StorageValue } from 'zustand/middleware'
+import { load, type Store } from '@tauri-apps/plugin-store'
+import type { PersistStorage, StorageValue } from 'zustand/middleware'
 
-import { PersistStore } from './persist-store'
+import type { PersistStore } from './persist-store'
 
 export class TauriStorageAdapter implements PersistStorage<PersistStore> {
   private tauriStore: Store | null = null
 
-  constructor(private storePath: string = 'persist-store.json') {}
+  constructor(private storePath = 'persist-store.json') {}
 
   async init(): Promise<void> {
     this.tauriStore = await load(this.storePath)
@@ -16,7 +16,9 @@ export class TauriStorageAdapter implements PersistStorage<PersistStore> {
   }
 
   async getItem(name: string): Promise<StorageValue<PersistStore> | null> {
-    if (!this.tauriStore) await this.init()
+    if (!this.tauriStore) {
+      await this.init()
+    }
 
     try {
       const value = await this.tauriStore!.get<PersistStore>(name)
@@ -29,11 +31,10 @@ export class TauriStorageAdapter implements PersistStorage<PersistStore> {
     return null
   }
 
-  async setItem(
-    name: string,
-    value: StorageValue<PersistStore>
-  ): Promise<void> {
-    if (!this.tauriStore) await this.init()
+  async setItem(name: string, value: StorageValue<PersistStore>): Promise<void> {
+    if (!this.tauriStore) {
+      await this.init()
+    }
 
     try {
       await this.tauriStore!.set(name, value.state)
@@ -43,7 +44,9 @@ export class TauriStorageAdapter implements PersistStorage<PersistStore> {
   }
 
   async removeItem(name: string): Promise<void> {
-    if (!this.tauriStore) await this.init()
+    if (!this.tauriStore) {
+      await this.init()
+    }
 
     try {
       await this.tauriStore!.delete(name)

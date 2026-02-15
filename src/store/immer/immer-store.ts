@@ -1,6 +1,6 @@
-import { create, StateCreator } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
-import { createPositionSlice, PositionSlice } from './position'
+import { createPositionSlice, type PositionSlice } from './position'
 
 type ImmerStore = PositionSlice
 

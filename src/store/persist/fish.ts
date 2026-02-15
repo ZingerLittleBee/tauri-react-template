@@ -1,4 +1,4 @@
-import { PersistCreator } from './persist-store'
+import type { PersistCreator } from './persist-store'
 
 type State = {
   fishes: number

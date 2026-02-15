@@ -1,9 +1,9 @@
 import createDeepMerge from '@fastify/deepmerge'
-import { create, StateCreator } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
-import { createFishSlice, FishSlice } from './fish'
+import { createFishSlice, type FishSlice } from './fish'
 import { tauriStorage } from './tauri-adapter'
 
 const deepMerge = createDeepMerge({ all: true })

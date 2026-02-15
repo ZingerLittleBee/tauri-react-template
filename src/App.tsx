@@ -1,17 +1,11 @@
+import { invoke } from '@tauri-apps/api/core'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useBoundStore } from '@/store'
 import { useImmerStore } from '@/store/immer/immer-store'
 import usePersistStore from '@/store/persist/persist-store'
-import { invoke } from '@tauri-apps/api/core'
-import { useState } from 'react'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from './components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card'
 import { Label } from './components/ui/label'
 
 function App() {
@@ -32,40 +26,38 @@ function App() {
   return (
     <main className="flex h-screen flex-col items-center justify-center gap-8">
       <div className="text-center">
-        <h1 className="text-2xl font-bold">Welcome to Tauri + Vite</h1>
-        <h2 className="text-lg font-medium">
-          React + Shadcn + Tailwind4 + Zustand
-        </h2>
+        <h1 className="font-bold text-2xl">Welcome to Tauri + Vite</h1>
+        <h2 className="font-medium text-lg">React + Shadcn + Tailwind4 + Zustand</h2>
       </div>
       <div className="flex gap-2">
-        <Button asChild size="icon" className="p-2">
-          <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" alt="Vite logo" />
+        <Button asChild className="p-2" size="icon">
+          <a href="https://vitejs.dev" rel="noopener" target="_blank">
+            <img alt="Vite logo" src="/vite.svg" />
           </a>
         </Button>
-        <Button asChild size="icon" className="p-2">
-          <a href="https://tauri.app" target="_blank">
-            <img src="/tauri.svg" alt="Tauri logo" />
+        <Button asChild className="p-2" size="icon">
+          <a href="https://tauri.app" rel="noopener" target="_blank">
+            <img alt="Tauri logo" src="/tauri.svg" />
           </a>
         </Button>
-        <Button asChild size="icon" className="p-2">
-          <a href="https://reactjs.org" target="_blank">
-            <img src="/react.svg" alt="React logo" />
+        <Button asChild className="p-2" size="icon">
+          <a href="https://reactjs.org" rel="noopener" target="_blank">
+            <img alt="React logo" src="/react.svg" />
           </a>
         </Button>
-        <Button asChild size="icon" variant="outline" className="p-2">
-          <a href="https://ui.shadcn.com" target="_blank">
-            <img src="/shadcn.svg" alt="Shadcn logo" />
+        <Button asChild className="p-2" size="icon" variant="outline">
+          <a href="https://ui.shadcn.com" rel="noopener" target="_blank">
+            <img alt="Shadcn logo" src="/shadcn.svg" />
           </a>
         </Button>
-        <Button asChild size="icon" variant="outline" className="p-2">
-          <a href="https://tailwindcss.com/" target="_blank">
-            <img src="/tailwind.svg" alt="Tailwind logo" />
+        <Button asChild className="p-2" size="icon" variant="outline">
+          <a href="https://tailwindcss.com/" rel="noopener" target="_blank">
+            <img alt="Tailwind logo" src="/tailwind.svg" />
           </a>
         </Button>
-        <Button asChild size="icon" variant="outline" className="p-2">
-          <a href="https://zustand.dev/" target="_blank">
-            <img src="/zustand.svg" alt="Zustand logo" />
+        <Button asChild className="p-2" size="icon" variant="outline">
+          <a href="https://zustand.dev/" rel="noopener" target="_blank">
+            <img alt="Zustand logo" src="/zustand.svg" />
           </a>
         </Button>
       </div>
@@ -90,9 +82,7 @@ function App() {
         <Card>
           <CardHeader>
             <CardTitle>Persist Store</CardTitle>
-            <CardDescription>
-              This store is persisted to the filesystem.
-            </CardDescription>
+            <CardDescription>This store is persisted to the filesystem.</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-2">
             <Label>Fishes: {fishes}</Label>
@@ -104,19 +94,17 @@ function App() {
         <Card>
           <CardHeader>
             <CardTitle>Immer Store</CardTitle>
-            <CardDescription>
-              This store is using Immer to manage state.
-            </CardDescription>
+            <CardDescription>This store is using Immer to manage state.</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-2">
             <Label>
               Position: {position.x}, {position.y}
             </Label>
             <div className="flex gap-2">
-              <Button variant="outline" onClick={() => setX(position.x + 1)}>
+              <Button onClick={() => setX(position.x + 1)} variant="outline">
                 Move X
               </Button>
-              <Button variant="outline" onClick={() => setY(position.y + 1)}>
+              <Button onClick={() => setY(position.y + 1)} variant="outline">
                 Move Y
               </Button>
             </div>
