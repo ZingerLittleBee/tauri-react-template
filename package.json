@@ -18,7 +18,7 @@
     "@base-ui/react": "^1.2.0",
     "@fastify/deepmerge": "^3.1.0",
     "@fontsource-variable/inter": "^5.2.8",
-    "@tailwindcss/vite": "^4.1.17",
+    "@tailwindcss/vite": "^4.1.18",
     "@tauri-apps/api": "^2.10.1",
     "@tauri-apps/plugin-opener": "^2.5.3",
     "@tauri-apps/plugin-store": "^2.4.2",
